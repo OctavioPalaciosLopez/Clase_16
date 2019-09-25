@@ -36,11 +36,23 @@ app.get('/handler2', function (req, res) {
     res.send('<h1>Hol</h1>')
 }) */
 
-app.use(function(req,res,next){
+/********** EJERCICIO 4 ***********/ 
+/*app.use(function(req,res,next){
     console.log('Soy middleware')
     res.send('Soy middleware')
     next()
+})*/
+
+/********** EJERCICIO 5 ***********/ 
+
+const router = express.Router()
+
+router.get('/',(req,res) => {
+    res.sendFile(__dirname + '/public/file.txt')
 })
+
+app.use('/asset', router)
+
 app.listen(9000, () => { 
     console.log(`Example app listening on port ${port}!`)
 })
